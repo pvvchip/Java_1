@@ -22,9 +22,37 @@ public class Main {
         while (true) {
             humanTurn();
             printMap();
+            if (checkWin('X')) break;
+            if (fullMap()) break;
             aiTurn();
             printMap();
+            if (checkWin('C')) break;
+            if (fullMap()) break;
         }
+        System.out.println("Конец игры.");
+    }
+
+    private static boolean checkWin(char c){
+
+//   горизонтали
+//   вертикали
+//   диоганали
+
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == c) return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean fullMap() {
+        for (int i = 0; i < map.length; i++) {
+            for (int j = 0; j < map[i].length; j++) {
+                if (map[i][j] == '*') return false;
+            }
+        }
+        return true;
     }
 
     private static void aiTurn() {
@@ -41,10 +69,10 @@ public class Main {
     private static void humanTurn() {
         int x, y;
         do {
-            System.out.println("Твой ход Х, Y");
+            System.out.println("Твой ход Х Y");
             x = scanner.nextInt() - 1;
             y = scanner.nextInt() - 1;
-        } while (map[x][y] != '*');
+        } while (x < 0 || x > 4 || y < 0 || y > 4 || map[x][y] != '*');
         map[x][y] = 'X';
         System.out.println();
     }
