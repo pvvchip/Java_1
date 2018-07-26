@@ -139,7 +139,7 @@ public class Main {
         return false;
     }
 
-    // подготовка поля
+    // проверка ничьи
     private static boolean fullMap() {
         for (char[] aMap : map) {
             for (char anAMap : aMap) {
