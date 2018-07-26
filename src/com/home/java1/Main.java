@@ -34,7 +34,9 @@ public class Main {
 
     private static boolean checkWin(char ch) {
         String win = new String();
-        String col = new String();
+        char[] col5 = new char[5];
+        char[] col4 = new char[4];
+        int x, y;
         if (ch == 'X') win = "XXXX";
         if (ch == 'C') win = "CCCC";
 
@@ -45,23 +47,92 @@ public class Main {
                 return true;
             }
         }
-//        //   вертикали
 
+        //   вертикали
         for (int i = 0; i < map.length; i++) {
             for (int row = 0; row < map.length; row++) {
-                col[row] = String.valueOf(map[row][i]);
+                col5[row] = (map[row][i]);
             }
-            if (String.valueOf(col).indexOf(win) >= 0) {
+            if (String.valueOf(col5).indexOf(win) >= 0) {
                 System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
                 return true;
             }
         }
-        //   диоганали
-        for (int i=0;i<10;i++){
-            for (int j=0;j<10;j++){
 
-            }
+        //   диагонали
+        // 1
+        x = 0;
+        y = -1;
+        for (int i = 0; i < 4; i++) {
+            x++;
+            y++;
+            col4[i] = map[y][x];
         }
+        if (String.valueOf(col4).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+        //2
+        x = -1;
+        y = -1;
+        for (int i = 0; i < 5; i++) {
+            x++;
+            y++;
+            col5[i] = map[y][x];
+        }
+        if (String.valueOf(col5).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+        //3
+        x = -1;
+        y = 0;
+        for (int i = 0; i < 4; i++) {
+            x++;
+            y++;
+            col4[i] = map[y][x];
+        }
+        if (String.valueOf(col4).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+        //4
+        x = 0;
+        y = 5;
+        for (int i = 0; i < 4; i++) {
+            x++;
+            y--;
+            col4[i] = map[y][x];
+        }
+        if (String.valueOf(col4).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+        //5
+        x = -1;
+        y = 5;
+        for (int i = 0; i < 5; i++) {
+            x++;
+            y--;
+            col5[i] = map[y][x];
+        }
+        if (String.valueOf(col5).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+        //6
+        x = -1;
+        y = 4;
+        for (int i = 0; i < 4; i++) {
+            x++;
+            y--;
+            col4[i] = map[y][x];
+        }
+        if (String.valueOf(col4).indexOf(win) >= 0) {
+            System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+            return true;
+        }
+
 
         return false;
     }
