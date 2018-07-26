@@ -32,18 +32,38 @@ public class Main {
         System.out.println("Конец игры.");
     }
 
-    private static boolean checkWin(char c){
+    private static boolean checkWin(char ch) {
+        String win = new String();
+        String col = new String();
+        if (ch == 'X') win = "XXXX";
+        if (ch == 'C') win = "CCCC";
 
-//   горизонтали
-//   вертикали
-//   диоганали
-
+        //   горизонтали
         for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                if (map[i][j] == c) return false;
+            if (String.valueOf(map[i]).indexOf(win) >= 0) {
+                System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+                return true;
             }
         }
-        return true;
+//        //   вертикали
+
+        for (int i = 0; i < map.length; i++) {
+            for (int row = 0; row < map.length; row++) {
+                col[row] = String.valueOf(map[row][i]);
+            }
+            if (String.valueOf(col).indexOf(win) >= 0) {
+                System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
+                return true;
+            }
+        }
+        //   диоганали
+        for (int i=0;i<10;i++){
+            for (int j=0;j<10;j++){
+
+            }
+        }
+
+        return false;
     }
 
     private static boolean fullMap() {
