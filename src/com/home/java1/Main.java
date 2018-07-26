@@ -19,6 +19,7 @@ public class Main {
         initMap();  //    инициализация игравого поля
         printMap(); //    печать игравого поля
 
+        // игровой цикл
         while (true) {
             humanTurn();
             printMap();
@@ -32,8 +33,9 @@ public class Main {
         System.out.println("Конец игры.");
     }
 
+    // проверка победы
     private static boolean checkWin(char ch) {
-        String win = new String();
+        String win = "";
         char[] col5 = new char[5];
         char[] col4 = new char[4];
         int x, y;
@@ -41,8 +43,8 @@ public class Main {
         if (ch == 'C') win = "CCCC";
 
         //   горизонтали
-        for (int i = 0; i < map.length; i++) {
-            if (String.valueOf(map[i]).indexOf(win) >= 0) {
+        for (char[] aMap : map) {
+            if (String.valueOf(aMap).contains(win)) {
                 System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
                 return true;
             }
@@ -53,7 +55,7 @@ public class Main {
             for (int row = 0; row < map.length; row++) {
                 col5[row] = (map[row][i]);
             }
-            if (String.valueOf(col5).indexOf(win) >= 0) {
+            if (String.valueOf(col5).contains(win)) {
                 System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
                 return true;
             }
@@ -68,7 +70,7 @@ public class Main {
             y++;
             col4[i] = map[y][x];
         }
-        if (String.valueOf(col4).indexOf(win) >= 0) {
+        if (String.valueOf(col4).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -80,7 +82,7 @@ public class Main {
             y++;
             col5[i] = map[y][x];
         }
-        if (String.valueOf(col5).indexOf(win) >= 0) {
+        if (String.valueOf(col5).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -92,7 +94,7 @@ public class Main {
             y++;
             col4[i] = map[y][x];
         }
-        if (String.valueOf(col4).indexOf(win) >= 0) {
+        if (String.valueOf(col4).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -104,7 +106,7 @@ public class Main {
             y--;
             col4[i] = map[y][x];
         }
-        if (String.valueOf(col4).indexOf(win) >= 0) {
+        if (String.valueOf(col4).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -116,7 +118,7 @@ public class Main {
             y--;
             col5[i] = map[y][x];
         }
-        if (String.valueOf(col5).indexOf(win) >= 0) {
+        if (String.valueOf(col5).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -128,7 +130,7 @@ public class Main {
             y--;
             col4[i] = map[y][x];
         }
-        if (String.valueOf(col4).indexOf(win) >= 0) {
+        if (String.valueOf(col4).contains(win)) {
             System.out.println("Победа " + ((ch == 'X') ? "Человека" : "Машины"));
             return true;
         }
@@ -137,15 +139,17 @@ public class Main {
         return false;
     }
 
+    // подготовка поля
     private static boolean fullMap() {
-        for (int i = 0; i < map.length; i++) {
-            for (int j = 0; j < map[i].length; j++) {
-                if (map[i][j] == '*') return false;
+        for (char[] aMap : map) {
+            for (char anAMap : aMap) {
+                if (anAMap == '*') return false;
             }
         }
         return true;
     }
 
+    // ход машины
     private static void aiTurn() {
         int x, y;
         System.out.println("Ход ai");
@@ -157,6 +161,7 @@ public class Main {
         System.out.println(++x + " " + ++y);
     }
 
+    // ход человека
     private static void humanTurn() {
         int x, y;
         do {
