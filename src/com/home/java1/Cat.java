@@ -1,8 +1,11 @@
 package com.home.java1;
 
-public class Cat extends Animals {
-    private final int limitRun = 200;
-    private final float limitJump = 2f;
+class Cat extends Animal {
+
+    Cat() {
+        this.limitRun = 200;
+        this.limitJump = 2f;
+    }
 
     @Override
     void run(int length) {

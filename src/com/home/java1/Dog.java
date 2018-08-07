@@ -1,15 +1,19 @@
 package com.home.java1;
 
-public class Dog extends Animals {
-    private int limitRun;
-    private final float limitJump = 0.5f;
-    private final int limitSwim = 10;
+class Dog extends Animal {
 
-    public Dog() {
+    private void init(){
+        this.limitSwim = 10;
+        this.limitJump = 0.5f;
+    }
+
+    Dog() {
+        init();
         this.limitRun = 500;
     }
 
-    public Dog(int limitRun) {
+    Dog(int limitRun) {
+        init();
         this.limitRun = limitRun;
     }
 

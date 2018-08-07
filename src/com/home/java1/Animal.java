@@ -1,6 +1,9 @@
 package com.home.java1;
 
-public class Animals {
+class Animal {
+    int limitRun;
+    float limitJump;
+    int limitSwim;
 
     void run(int length){
         System.out.println("пробежала " + length + "м.");
